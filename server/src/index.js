@@ -3,6 +3,7 @@ var app = express();
 var router = express.Router();
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var last_bear_id = 3;
 
 var bears = [
     {
@@ -20,6 +21,7 @@ router.route('/bears')
     .post(function(req, res) {
        var bear = {};
        bear.name = req.body.name;
+       bear.id = "" + (last_bear_id++);
        bears.push(bear);
        res.json({ message: 'Bear created!' });
       });
